@@ -2,23 +2,35 @@ const TURNS = {
   X: 'X',
   o:'O'
 }
-const board = array(9).fill(null)
+
+const Square = ({children,updateboard,index})
+return(
+  <div className="square">
+    {children}
+  </div>
+)
+
+
 function App() {
-return (<main className='board'>
+const [board, setBoard] = useState(Array(9)).fill(null)
+const [turn, setTurn] = useState(TURNS.X)
+return (
+<main className="board">
   <h1>Tic tac Toe</h1>
-  <section className='game'>
+  <section className="game">
 {
-  board.map((_,index) => {
+  board.map((_ ,index) => {
     return (
-      <div className='cell' key={index}>
-        <span className='cell_content'>
-        {index}
-        </span>
-      </div>
-    )
-  }
+      <Square  
+      key={index}
+      index={index}
+      >
+        </Square>
+  
   )
+})
 }
+
   </section>
   </main>
 )}
